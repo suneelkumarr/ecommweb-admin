@@ -1,26 +1,23 @@
-import Axios from 'axios';
-import swal from 'sweetalert';
-import {api} from '../api'
-import {ErrorHandeller} from './Error'
+import Axios from 'axios'
+import swal from 'sweetalert'
+import { api } from '../api'
+import { ErrorHandeller } from './Error'
 
-//my Profile 
+// My profile
 const MyProfile = async (header) => {
     try {
-        const response = await Axios.get(`${get}profile`, header)
-        if(response.status === 200) {
-            return response.data
-        }
-    }catch(err) {
-        if(err) return ErrorHandeller(err)
+        const response = await Axios.get(`${api}profile`, header)
+        if (response.status === 200) return response.data
+    } catch (error) {
+        if (error) return ErrorHandeller(error)
     }
 }
 
-//Update my profile
-
-const UpdateProfile = async (data,header) => {
-    try{
-        const response = await Axios.get(`${api}profile`, data, header)
-        if(response.status === 201) {
+// Update my profile
+const UpdateProfile = async (data, header) => {
+    try {
+        const response = await Axios.put(`${api}profile`, data, header)
+        if (response.status === 201) {
             swal({
                 title: "Successfully!",
                 text: response.data.message,
@@ -29,17 +26,16 @@ const UpdateProfile = async (data,header) => {
             })
             return true
         }
-    }catch(err) {
-        if(err) return ErrorHandeller(err)
+    } catch (error) {
+        if (error) return ErrorHandeller(error)
     }
 }
 
-// Change Password 
-const ChangePassword = async (data,header) => { 
-    const response = await Axios.get(`${api}profile/change-password`, data, header)
+// Change password
+const ChangePassword = async (data, header) => {
+    const response = await Axios.put(`${api}profile/change-password`, data, header)
     return response
 }
-
 
 const Profile = {
     MyProfile,
