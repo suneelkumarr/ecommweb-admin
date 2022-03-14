@@ -42,26 +42,26 @@ const Index = () => {
 
             <div className="main">
                 <Routes>
-
+                    console.log('tu hei permitted routes',permitted)
                     {permitted && permitted.map((item, i) =>
                         item.name && item.path ?
                             <Route
                                 key={i}
-                                exact={item.exact}
+                                exact={`${item.exact}`}
                                 path={item.path}
-                                element={<item.component/>}
+                                element={item.component}
                             />
                             : item.child && item.child.length ? item.child.map((child, j) =>
                                 <Route
                                     key={j}
-                                    exact={child.exact}
+                                    exact={`${child.exact}`}
                                     path={child.path}
                                     element={child.component}
                                 />
                             ) : null)
                     }
 
-                    <Route path="*" component={<FourOFour />} />
+                    <Route path="*" element={<FourOFour />} />
 
                 </Routes>
             </div>

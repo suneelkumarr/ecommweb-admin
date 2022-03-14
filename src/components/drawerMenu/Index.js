@@ -17,7 +17,7 @@ const MenuItem = props => {
                     to={props.path}
                     exact={props.exact}
                     type="button"
-                    activeClassName="isActive"
+                    activeclassname="isActive"
                     className="btn shadow-none menu-btn"
                 >
                     <span className="menu-icon">{props.icon}</span>
@@ -56,7 +56,7 @@ const MenuItem = props => {
                             icon={item.icon}
                             path={item.path}
                             title={item.title}
-                            exact={item.exact ? item.exact : false}
+                            exact={`${item.exact}` ? `${item.exact}` : false}
                             child={item.child}
                         />
                         : null
@@ -78,7 +78,7 @@ const TreeMenu = (props) => {
                                 icon={item.icon}
                                 path={item.path}
                                 title={item.title}
-                                exact={item.exact ? item.exact : false}
+                                exact={`${item.exact}` ? `${item.exact}` : false}
                                 child={item.child}
                             />
                         )

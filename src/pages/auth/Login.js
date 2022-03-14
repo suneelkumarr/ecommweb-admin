@@ -63,7 +63,7 @@ const Login = () => {
 
           if (path) {
               localStorage.setItem('token', response.token)
-              return navigate.push(path)
+              return navigate(path)
           }
       }
       setLogging(false)
